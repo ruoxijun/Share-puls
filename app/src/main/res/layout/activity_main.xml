@@ -4,14 +4,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".main.MainActivity">
+    tools:context=".main.MainActivity"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="#FFFFFF"
+        android:gravity="center_vertical">
+        <EditText
+            android:id="@+id/find"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/ss_edit"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
+            android:hint="搜索感兴趣的内容"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:drawableLeft="@drawable/ic_baseline_search_24"/>
+        <ImageView
+            android:id="@+id/addA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_add_circle_24"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="20dp"/>
+    </LinearLayout>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:background="#FCFFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/guideline12"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
         tools:layout_editor_absoluteX="26dp">
 
         <com.google.android.material.tabs.TabLayout
@@ -19,7 +53,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="top"
-            app:tabTextColor="#E91E63" />
+            app:tabIndicatorColor="#D81B60"
+            app:tabIndicatorHeight="2dp"
+            app:tabSelectedTextColor="#E53935"
+            app:tabTextColor="#000000" />
 
     </androidx.viewpager.widget.ViewPager>
 
@@ -30,40 +67,88 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.93" />
 
-    <ImageView
-        android:id="@+id/homePage"
+    <TextView
+        android:id="@+id/textView3"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@color/no_check"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/add"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline12"
-        app:srcCompat="@drawable/home_y" />
+        android:layout_height="1dp"
+        android:background="#B8B4B4"
+        app:layout_constraintBottom_toTopOf="@+id/guideline12"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageView
-        android:id="@+id/add"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@color/no_check"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/personal"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/homePage"
-        app:layout_constraintTop_toTopOf="@+id/guideline12"
-        app:srcCompat="@drawable/add" />
-
-    <ImageView
-        android:id="@+id/personal"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@color/no_check"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/add"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline12"
-        app:srcCompat="@drawable/my_n" />
+        android:paddingTop="5dp"
+        android:paddingBottom="3dp"
+        android:background="#FFFFFF">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#FFFFFF"
+            android:orientation="vertical"
+            android:id="@+id/homePage">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                app:srcCompat="@mipmap/home_y"
+                android:id="@+id/homePageImg"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="首页"
+                android:textColor="#111"
+                android:gravity="center"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#FFFFFF"
+            android:orientation="vertical"
+            android:id="@+id/add">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                app:srcCompat="@mipmap/add"
+                android:id="@+id/addImg"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="创作"
+                android:textColor="#111"
+                android:gravity="center"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#FFFFFF"
+            android:orientation="vertical"
+            android:id="@+id/personal">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                app:srcCompat="@mipmap/my_n"
+                android:id="@+id/personalImg"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="我的"
+                android:textColor="#111"
+                android:gravity="center"/>
+        </LinearLayout>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,17 +3,19 @@ package com.example.share.main;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
-
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Toast;
+import android.widget.LinearLayout;
 
 import com.example.share.R;
 import com.example.share.blog.AddBlogActivity;
+import com.example.share.main.Find.FindActivity;
 import com.example.share.main.adapter.MainAdapter;
 import com.example.share.main.fragment.AttFragment;
 import com.example.share.main.fragment.MyFragment;
@@ -22,30 +24,28 @@ import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity  implements ViewPager.OnPageChangeListener {
-    private ImageView homePage,add,personal;
+public class MainActivity extends AppCompatActivity
+        implements ViewPager.OnPageChangeListener {
+    private ImageView homePageImg,addImg,personalImg,addA;
+    private EditText find;
+    private LinearLayout homePage,add,personal;
     private ViewPager pager;
-    private TabLayout tab;
-    private String userName,user_id;
     private AttFragment ft1;
     private Recommend ft2;
     private MyFragment ft3;
-    private static Context context;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // 沉浸式(透明)状态栏适配
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        context = getApplicationContext();
         
-        Intent intent=getIntent();
-        userName=intent.getStringExtra("userName");
-        SharedPreferences sp=getSharedPreferences("user",MODE_PRIVATE); // 用户id
-        user_id=sp.getString("userId",null);
-        
-        ft1=new AttFragment(this,user_id); // 关注页
-        ft2=new Recommend(this); // 推荐页
-        ft3=new MyFragment(this,user_id); // 我的页面
+        ft1=new AttFragment(); // 关注页
+        ft2=new Recommend(); // 推荐页
+        ft3=new MyFragment(); // 我的页面
         ArrayList<Fragment> fts=new ArrayList<>();
         fts.add(ft1);
         fts.add(ft2);
@@ -55,19 +55,40 @@ public class MainActivity extends AppCompatActivity  implements ViewPager.OnPage
         pager.setCurrentItem(1); // 设置首页
         
         add=findViewById(R.id.add); // 添加博文
+        addImg = findViewById(R.id.addImg);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i=new Intent(MainActivity.this, AddBlogActivity.class);
-                i.putExtra("userName",userName);
                 startActivity(i);
             }
         });
+        addA=findViewById(R.id.addA); // 添加博文
+        addA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(MainActivity.this, AddBlogActivity.class);
+                startActivity(i);
+            }
+        });
+        
+        // 创作键触摸监听器
+        add.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction()==MotionEvent.ACTION_DOWN)
+                    addImg.setImageResource(R.mipmap.add_c);
+                if (event.getAction()==MotionEvent.ACTION_UP)
+                    addImg.setImageResource(R.mipmap.add);
+                return false;
+            }
+        });
+        
         pager.addOnPageChangeListener(this); // 添加界面切换监听
-        tab=findViewById(R.id.tab);
         
         // 首页键
         homePage=findViewById(R.id.homePage);
+        homePageImg=findViewById(R.id.homePageImg);
         homePage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,8 +96,19 @@ public class MainActivity extends AppCompatActivity  implements ViewPager.OnPage
                 pager.setCurrentItem(1); // 跳首页
             }
         });
+        // 首页键触摸监听器
+        homePage.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction()==MotionEvent.ACTION_DOWN){
+                    homePageImg.setImageResource(R.mipmap.home_c);
+                }
+                return false;
+            }
+        });
         // 我的键
         personal = findViewById(R.id.personal);
+        personalImg = findViewById(R.id.personalImg);
         personal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,11 +116,34 @@ public class MainActivity extends AppCompatActivity  implements ViewPager.OnPage
                 pager.setCurrentItem(2); // 跳到我的页面
             }
         });
+        // 我的键触摸监听器
+        personal.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction()==MotionEvent.ACTION_DOWN){
+                    personalImg.setImageResource(R.mipmap.my_c);
+                }
+                return false;
+            }
+        });
+        
+        // 搜索框事件监听
+        find =findViewById(R.id.find);
+        find.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_UP){
+                    Intent intent = new Intent(getApplicationContext(), FindActivity.class);
+                    startActivity(intent);
+                }
+                return true;
+            }
+        });
     }
     
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
-    @Override
+    @Override // 页面更改监听
     public void onPageSelected(int position) {
         switch (position){
             case 0:
@@ -115,13 +170,11 @@ public class MainActivity extends AppCompatActivity  implements ViewPager.OnPage
     public void onPageScrollStateChanged(int state) {}
     
     public void toHome(){ // 主页面
-        personal.setImageResource(R.drawable.my_n);
-        personal.setBackgroundColor(getResources().getColor(R.color.no_check));
-        homePage.setImageResource(R.drawable.home_y);
+        homePageImg.setImageResource(R.mipmap.home_y);
+        personalImg.setImageResource(R.mipmap.my_n);
     }
     public void toMy(){ // 我的页面
-        homePage.setImageResource(R.drawable.home);
-        homePage.setBackgroundColor(getResources().getColor(R.color.no_check));
-        personal.setImageResource(R.drawable.my_y);
+        homePageImg.setImageResource(R.mipmap.home);
+        personalImg.setImageResource(R.mipmap.my_y);
     }
 }

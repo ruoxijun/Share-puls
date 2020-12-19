@@ -4,8 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     android:orientation="vertical"
-    tools:context=".main.addition.AttActivity">
+    tools:context=".main.addition.AttActivity"
+    android:fitsSystemWindows="true">
 
     <TextView
         android:id="@+id/title"
@@ -88,5 +90,5 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline31"
         app:layout_constraintStart_toStartOf="@+id/guideline30"
         app:layout_constraintTop_toTopOf="@+id/guideline39"
-        app:srcCompat="@drawable/ic_reset" />
+        app:srcCompat="@mipmap/ic_reset" />
 </androidx.constraintlayout.widget.ConstraintLayout>

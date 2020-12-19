@@ -5,11 +5,5 @@
     如果你要使用Http明文访问，那么需要配置一下。
  -->
 <network-security-config>
-    <domain-config>
-        <domain includeSubdomains="true">sunofbeaches.com</domain>
-        <domain-config cleartextTrafficPermitted="true">
-            <domain includeSubdomains="true">www.sunofbeach.net</domain>
-            <domain includeSubdomains="true">imgs.sunofbeaches.com</domain>
-        </domain-config>
-    </domain-config>
+    <base-config cleartextTrafficPermitted="true"/>
 </network-security-config>

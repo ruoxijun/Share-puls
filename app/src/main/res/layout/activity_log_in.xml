@@ -4,18 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/login3"
+    android:fitsSystemWindows="true"
     tools:context=".firstchoice.LogInActivity">
 
     <EditText
         android:id="@+id/userName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/edit_bg"
+        android:background="@drawable/edit_login"
         android:drawableStart="@drawable/ic_baseline_account_circle_24"
         android:ems="10"
         android:hint="账号/用户名"
-        android:textSize="20sp"
         android:inputType="textPersonName"
+        android:padding="12dp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline9"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline8"
@@ -25,12 +28,14 @@
         android:id="@+id/userPass"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/edit_bg"
+        android:layout_margin="5dp"
+        android:background="@drawable/edit_login"
         android:drawableStart="@drawable/ic_baseline_edit_24"
         android:ems="10"
         android:hint="密码"
-        android:textSize="20sp"
         android:inputType="textPassword"
+        android:padding="12dp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline9"
         app:layout_constraintStart_toStartOf="@+id/guideline8"
         app:layout_constraintTop_toTopOf="@+id/guideline5" />
@@ -40,7 +45,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="注册 >"
-        android:textColor="#D2111111"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintEnd_toStartOf="@+id/guideline9" />
@@ -50,7 +54,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/button_ripple"
-        android:text="登录"
+        android:text="登     录"
+        android:textColor="#882220"
         android:textSize="28sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toStartOf="@+id/guideline9"
@@ -64,7 +69,7 @@
         android:layout_height="wrap_content"
         android:text="记住密码"
         android:textSize="18sp"
-        android:thumbTint="#E91E63"
+        android:thumbTint="#F4511E"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintStart_toStartOf="@+id/guideline8" />
 
@@ -80,21 +85,14 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toStartOf="@+id/guideline4"
-        app:layout_constraintStart_toStartOf="@+id/guideline4"
-        app:layout_constraintTop_toTopOf="@+id/guideline"
-        app:srcCompat="@mipmap/login" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.1" />
+    <!--    <ImageView-->
+    <!--        android:id="@+id/imageView"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        app:layout_constraintEnd_toStartOf="@+id/guideline4"-->
+    <!--        app:layout_constraintStart_toStartOf="@+id/guideline4"-->
+    <!--        app:layout_constraintTop_toTopOf="@+id/guideline"-->
+    <!--        app:srcCompat="@mipmap/login" />-->
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
@@ -129,7 +127,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.75" />
+        app:layout_constraintGuide_percent="0.9" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline8"
@@ -159,4 +157,5 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline9"
         app:layout_constraintStart_toStartOf="@+id/guideline8"
         app:layout_constraintTop_toBottomOf="@+id/userPass" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

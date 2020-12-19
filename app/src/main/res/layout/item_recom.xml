@@ -3,13 +3,11 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="5dp"
-    android:layout_marginBottom="5dp"
-    android:layout_marginStart="10dp"
-    android:layout_marginEnd="10dp"
-    android:padding="5dp"
-    android:background="@drawable/blog_ripple"
-    android:id="@+id/view">
+    android:layout_marginTop="3dp"
+    android:layout_marginBottom="3dp"
+    android:padding="15dp"
+    android:id="@+id/view"
+    android:background="#FFFFFF">
     <TextView
         android:id="@+id/title"
         android:layout_width="match_parent"
@@ -28,12 +26,13 @@
         android:text="mess"
         android:textSize="18sp"
         android:maxLines="3"
-        android:singleLine="true"
+        android:ellipsize="end"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="6dp"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
         android:layout_marginBottom="5dp">
         <TextView
             android:id="@+id/userName"
@@ -52,16 +51,5 @@
             android:layout_height="match_parent"
             android:text="1"
             />
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:src="@drawable/ic_forum"
-            android:layout_marginStart="10dp"/>
-        <TextView
-            android:id="@+id/comment"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="1"/>
-
     </LinearLayout>
 </LinearLayout>

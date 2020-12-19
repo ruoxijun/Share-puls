@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 import java.util.ArrayList;
 
+// 导航栏适配器
 public class MainAdapter extends FragmentPagerAdapter {
     ArrayList<Fragment> fts;
     String[] titles=new String[]{"关注","推荐","我的"};

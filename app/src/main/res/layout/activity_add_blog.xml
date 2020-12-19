@@ -4,16 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".blog.AddBlogActivity">
+    android:background="#FFFFFF"
+    tools:context=".blog.AddBlogActivity"
+    android:fitsSystemWindows="true">
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="标题："
-        android:textColor="#000000"
         android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline22"
         app:layout_constraintStart_toStartOf="@+id/guideline19"
+        app:layout_constraintTop_toTopOf="@+id/guideline18" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:background="#0C111111"
         app:layout_constraintTop_toTopOf="@+id/guideline18" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -21,7 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.08" />
+        app:layout_constraintGuide_percent="0.06" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline19"
@@ -58,46 +67,29 @@
         android:background="@drawable/edit_bg"
         android:hint="为您的文章取一个标题"
         android:inputType="textPersonName"
+        android:maxLines="2"
         app:layout_constraintEnd_toStartOf="@+id/guideline20"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline19"
-        app:layout_constraintTop_toTopOf="@+id/guideline22"
-        android:maxLines="2"/>
+        app:layout_constraintTop_toTopOf="@+id/guideline22" />
 
     <ImageView
         android:id="@+id/close"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:background="@drawable/ic_baseline_arrow_back_24"
         app:layout_constraintBottom_toTopOf="@+id/guideline18"
-        app:layout_constraintEnd_toStartOf="@+id/guideline23"
-        app:layout_constraintStart_toStartOf="@+id/guideline19"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_close" />
+        app:layout_constraintStart_toStartOf="@+id/guideline19" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline23"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.15085158" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline24"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.75" />
-
-    <Button
+    <TextView
         android:id="@+id/add"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/button_ripple"
         android:text="发布"
+        android:textColor="#EF8583"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline18"
-        app:layout_constraintEnd_toStartOf="@+id/guideline20"
-        app:layout_constraintStart_toStartOf="@+id/guideline24" />
+        app:layout_constraintEnd_toStartOf="@+id/guideline20" />
 
     <ScrollView
         android:layout_width="0dp"
@@ -112,7 +104,7 @@
             android:id="@+id/mess"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#fff"
+            android:background="@drawable/edit_bg"
             android:gravity="top"
             android:hint="聊一聊你此时的想法，或者是您所想记录的内容"
             android:minLines="10" />

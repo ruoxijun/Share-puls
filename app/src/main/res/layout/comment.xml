@@ -4,20 +4,22 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:layout_marginBottom="15dp">
+    android:paddingBottom="15dp"
+    android:paddingTop="15dp"
+    android:background="#FFFFFF">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="15dp">
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="10dp">
 
         <ImageView
             android:id="@+id/avatar"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginEnd="10dp"
-            android:src="@drawable/tx" />
+            android:src="@mipmap/tx" />
 
         <LinearLayout
             android:layout_width="0dp"
@@ -25,25 +27,70 @@
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:orientation="vertical">
-
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+                <TextView
+                    android:id="@+id/userName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="userName"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:layout_marginEnd="5dp" />
+                <TextView
+                    android:id="@+id/tag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:text=" 作者 "
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:textSize="10sp"
+                    android:background="@drawable/button_ripple"
+                    android:visibility="invisible"/>
+            </LinearLayout>
             <TextView
-                android:id="@+id/userName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="userName"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="time" />
+                android:text="" />
             <TextView
                 android:id="@+id/mgs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
                 android:text="mgs"
-                android:textSize="20sp"/>
+                android:textSize="18sp"/>
         </LinearLayout>
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/floor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="70dp"
+            android:layout_marginEnd="20dp"
+            android:text="0楼"/>
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:text="0000年00月00日"/>
+        <TextView
+            android:id="@+id/delete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:paddingEnd="10dp"
+            android:text="删除"
+            android:textColor="#F32929"
+            android:visibility="gone"/>
+    </LinearLayout>
+
 </LinearLayout>
